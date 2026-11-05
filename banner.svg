@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" role="img" aria-label="Terminal banner: Haitham Hani Dalloul">
+  <style>
+    .mono { font-family: 'JetBrains Mono','Fira Code',Consolas,'Courier New',monospace; font-size: 17px; }
+    .p { fill: #7ee787; } .c { fill: #e6edf3; } .o { fill: #8b949e; }
+    .k { fill: #79c0ff; } .y { fill: #f2cc60; } .m { fill: #d2a8ff; }
+    .q { font-family: Georgia,'Times New Roman',serif; font-style: italic; font-size: 19px; fill: #f0f6fc; }
+    .line { opacity: 0; animation: show .01s forwards; }
+    .l1 { animation-delay: .3s; } .l2 { animation-delay: .9s; } .l3 { animation-delay: 1.5s; }
+    .l4 { animation-delay: 2.1s; } .l5 { animation-delay: 2.5s; } .l6 { animation-delay: 2.9s; }
+    .l7 { animation-delay: 3.5s; } .l8 { animation-delay: 4.1s; } .l9 { animation-delay: 4.7s; }
+    @keyframes show { to { opacity: 1; } }
+    .cursor { animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/><stop offset="1" stop-color="#161b22"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="898" height="328" rx="12" fill="url(#bg)" stroke="#30363d" stroke-width="2"/>
+  <path d="M1 13 a12 12 0 0 1 12 -12 h874 a12 12 0 0 1 12 12 v25 h-898z" fill="#21262d"/>
+  <circle cx="24" cy="20" r="6.5" fill="#ff5f57"/><circle cx="46" cy="20" r="6.5" fill="#febc2e"/><circle cx="68" cy="20" r="6.5" fill="#28c840"/>
+  <text x="450" y="25" text-anchor="middle" class="mono o" style="font-size:14px">haitham@github: ~</text>
+
+  <g class="mono">
+    <text x="28" y="72" class="line l1"><tspan class="p">haitham@github</tspan><tspan class="c">:</tspan><tspan class="k">~</tspan><tspan class="c">$ whoami</tspan></text>
+    <text x="28" y="97" class="line l2 y">Haitham Hani Dalloul — Computer Science Student @ Al-Aqsa University</text>
+
+    <text x="28" y="131" class="line l3"><tspan class="p">haitham@github</tspan><tspan class="c">:</tspan><tspan class="k">~</tspan><tspan class="c">$ git status</tspan></text>
+    <text x="28" y="156" class="line l4 c">On branch <tspan class="m">main</tspan></text>
+    <text x="28" y="181" class="line l5 o">Changes being learned:</text>
+    <text x="28" y="206" class="line l6" xml:space="preserve"><tspan class="p">  modified:  artificial-intelligence/   machine-learning/   cybersecurity/</tspan></text>
+
+    <text x="28" y="240" class="line l7"><tspan class="p">haitham@github</tspan><tspan class="c">:</tspan><tspan class="k">~</tspan><tspan class="c">$ cat motto.txt</tspan></text>
+  </g>
+  <text x="450" y="280" text-anchor="middle" class="q line l8">“Code is how I turn curiosity into something real.”</text>
+  <g class="mono line l9">
+    <text x="28" y="314"><tspan class="p">haitham@github</tspan><tspan class="c">:</tspan><tspan class="k">~</tspan><tspan class="c">$ </tspan><tspan class="c cursor">▋</tspan></text>
+  </g>
+</svg>
