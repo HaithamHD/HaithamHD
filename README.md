@@ -22,16 +22,12 @@
 ## 📊 GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=HaithamHD&show_icons=true&theme=github_dark&hide_border=true&count_private=true" height="165" alt="GitHub stats">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=HaithamHD&layout=compact&theme=github_dark&hide_border=true" height="165" alt="Top languages">
+  <img src="profile-summary-card-output/github_dark/3-stats.svg" height="180" alt="GitHub stats">
+  <img src="profile-summary-card-output/github_dark/2-most-commit-language.svg" height="180" alt="Most commit language">
 </p>
 
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=HaithamHD&theme=github-dark-blue&hide_border=true" alt="GitHub streak">
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=HaithamHD&theme=darkhub&no-frame=true&no-bg=true&margin-w=6&row=1" alt="Trophies">
 </p>
 
 ## 🎯 Goals
