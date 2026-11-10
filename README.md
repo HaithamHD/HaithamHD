@@ -9,13 +9,14 @@
 ## 🛠️ Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=python,java,tensorflow,sklearn,html,css,git,github,vscode&theme=dark" alt="Tech stack">
+  <img src="https://skillicons.dev/icons?i=python,java,php,laravel,tensorflow,sklearn,html,css,tailwind,sqlite,mysql,git,github,vscode&theme=dark" alt="Tech stack">
 </p>
 
 ## 🚀 Featured Projects
 
 | Project | Description | Tech |
 |---|---|---|
+| [Lifestyle Management System](https://github.com/HaithamHD/lifestyle-management-system) | Laravel 12 web app for tasks, habits, journal and mood tracking with a REST API, Sanctum auth and an admin dashboard | Laravel, PHP, SQLite, Tailwind |
 | [House Number Recognition (SVHN)](https://github.com/HaithamHD/svhn-digit-recognition) | CNN that recognizes digits in real street-view images — **87.92%** test accuracy | TensorFlow, Keras |
 | [Heart Disease Prediction](https://github.com/HaithamHD/Heart-disease-prediction) | Random Forest model predicting cardiovascular disease from 70,000 patient records | scikit-learn, pandas |
 
