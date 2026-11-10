@@ -37,8 +37,7 @@
 
 <p align="center">
   <img src="profile-summary-card-output/github_dark/3-stats.svg" height="180" alt="GitHub stats">
-  <img src="profile-summary-card-output/github_dark/2-most-commit-language.svg" height="180" alt="Most commit language">
-</p>
+<img src="languages-card/languages.svg" height="180" alt="Languages used"></p>
 
 <p align="center">
   <img src="https://streak-stats.demolab.com?user=HaithamHD&theme=github-dark-blue&hide_border=true" alt="GitHub streak">
