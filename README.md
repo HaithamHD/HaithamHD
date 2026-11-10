@@ -9,7 +9,20 @@
 ## 🛠️ Tech Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=python,java,php,laravel,tensorflow,sklearn,html,css,tailwind,sqlite,mysql,git,github,vscode&theme=dark" alt="Tech stack">
+  <a href="https://www.python.org"><img src="https://skillicons.dev/icons?i=python&theme=dark" width="48" alt="Python"></a>
+  <a href="https://www.java.com"><img src="https://skillicons.dev/icons?i=java&theme=dark" width="48" alt="Java"></a>
+  <a href="https://www.php.net"><img src="https://skillicons.dev/icons?i=php&theme=dark" width="48" alt="PHP"></a>
+  <a href="https://laravel.com"><img src="https://skillicons.dev/icons?i=laravel&theme=dark" width="48" alt="Laravel"></a>
+  <a href="https://www.tensorflow.org"><img src="https://skillicons.dev/icons?i=tensorflow&theme=dark" width="48" alt="TensorFlow"></a>
+  <a href="https://scikit-learn.org"><img src="https://skillicons.dev/icons?i=sklearn&theme=dark" width="48" alt="scikit-learn"></a>
+  <a href="https://developer.mozilla.org/docs/Web/HTML"><img src="https://skillicons.dev/icons?i=html&theme=dark" width="48" alt="HTML"></a>
+  <a href="https://developer.mozilla.org/docs/Web/CSS"><img src="https://skillicons.dev/icons?i=css&theme=dark" width="48" alt="CSS"></a>
+  <a href="https://tailwindcss.com"><img src="https://skillicons.dev/icons?i=tailwind&theme=dark" width="48" alt="Tailwind CSS"></a>
+  <a href="https://www.sqlite.org"><img src="https://skillicons.dev/icons?i=sqlite&theme=dark" width="48" alt="SQLite"></a>
+  <a href="https://www.mysql.com"><img src="https://skillicons.dev/icons?i=mysql&theme=dark" width="48" alt="MySQL"></a>
+  <a href="https://git-scm.com"><img src="https://skillicons.dev/icons?i=git&theme=dark" width="48" alt="Git"></a>
+  <a href="https://github.com/HaithamHD"><img src="https://skillicons.dev/icons?i=github&theme=dark" width="48" alt="GitHub"></a>
+  <a href="https://code.visualstudio.com"><img src="https://skillicons.dev/icons?i=vscode&theme=dark" width="48" alt="VS Code"></a>
 </p>
 
 ## 🚀 Featured Projects
