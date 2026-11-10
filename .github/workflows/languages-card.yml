@@ -1,0 +1,114 @@
+name: Languages-Card
+
+on:
+  schedule:
+    - cron: "30 0 * * *"   # update once a day
+  workflow_dispatch:       # allows running it manually
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Generate languages card
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const user = context.repo.owner;
+
+            // Collect language bytes from every public, non-fork repository
+            const repos = await github.paginate(github.rest.repos.listForUser, {
+              username: user, type: 'owner', per_page: 100,
+            });
+            const shares = {};
+            let projectCount = 0;
+            for (const repo of repos) {
+              if (repo.fork || repo.archived || repo.private) continue;
+              const { data } = await github.rest.repos.listLanguages({ owner: user, repo: repo.name });
+              const total = Object.values(data).reduce((a, b) => a + b, 0);
+              if (!total) continue;
+              projectCount++;
+              // Every project counts equally, so one large file can't dominate the chart
+              for (const [lang, bytes] of Object.entries(data)) {
+                shares[lang] = (shares[lang] || 0) + bytes / total;
+              }
+            }
+
+            const langs = Object.entries(shares)
+              .map(([name, s]) => ({ name, pct: (s / projectCount) * 100 }))
+              .sort((a, b) => b.pct - a.pct);
+
+            const colors = {
+              'Python': '#3572A5', 'Jupyter Notebook': '#DA5B0B', 'PHP': '#4F5D95', 'Blade': '#f7523f',
+              'JavaScript': '#f1e05a', 'TypeScript': '#3178c6', 'HTML': '#e34c26', 'CSS': '#663399',
+              'SCSS': '#c6538c', 'Java': '#b07219', 'Kotlin': '#A97BFF', 'C': '#555555', 'C++': '#f34b7d',
+              'C#': '#178600', 'Go': '#00ADD8', 'Dart': '#00B4AB', 'Vue': '#41b883', 'Shell': '#89e051',
+              'PowerShell': '#5391FE', 'Batchfile': '#C1F12E', 'Dockerfile': '#384d54', 'TSQL': '#e38c00',
+              'PLpgSQL': '#336790', 'R': '#198CE7', 'Swift': '#F05138', 'Ruby': '#701516', 'Rust': '#dea584',
+            };
+            const colorOf = (n) => colors[n] || '#8b949e';
+            const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+            // Layout
+            const W = 495, pad = 25, barY = 62, barW = W - pad * 2;
+            const rows = Math.ceil(langs.length / 2);
+            const H = 100 + rows * 26 + 14;
+
+            let x = 0;
+            const segments = langs.map((l) => {
+              const w = (l.pct / 100) * barW;
+              const seg = `<rect x="${(pad + x).toFixed(2)}" y="${barY}" width="${w.toFixed(2)}" height="10" fill="${colorOf(l.name)}"/>`;
+              x += w;
+              return seg;
+            }).join('');
+
+            const legend = langs.map((l, i) => {
+              const col = i % 2, row = Math.floor(i / 2);
+              const lx = pad + col * 225, ly = 104 + row * 26;
+              const label = l.pct < 0.1 ? '&lt;0.1' : l.pct.toFixed(1);
+              return [
+                `<g class="item" style="animation-delay:${(i * 0.08).toFixed(2)}s">`,
+                `<circle cx="${lx + 5}" cy="${ly - 4}" r="5" fill="${colorOf(l.name)}"/>`,
+                `<text x="${lx + 18}" y="${ly}" class="lang">${esc(l.name)} <tspan class="pct">${label}%</tspan></text>`,
+                `</g>`,
+              ].join('');
+            }).join('\n');
+
+            const svg = [
+              `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Languages used across ${projectCount} projects">`,
+              `<style>`,
+              `.title { font: 600 18px 'Segoe UI', Ubuntu, sans-serif; fill: #58a6ff; }`,
+              `.sub { font: 400 12px 'Segoe UI', Ubuntu, sans-serif; fill: #8b949e; }`,
+              `.lang { font: 400 13px 'Segoe UI', Ubuntu, sans-serif; fill: #c9d1d9; }`,
+              `.pct { fill: #8b949e; }`,
+              `.item { opacity: 0; animation: fade .4s ease-in-out forwards; }`,
+              `@keyframes fade { to { opacity: 1; } }`,
+              `</style>`,
+              `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="6" fill="#0d1117" stroke="#30363d"/>`,
+              `<text x="${pad}" y="34" class="title">Languages Used</text>`,
+              `<text x="${W - pad}" y="34" text-anchor="end" class="sub">across ${projectCount} projects</text>`,
+              `<clipPath id="bar"><rect x="${pad}" y="${barY}" width="${barW}" height="10" rx="5"/></clipPath>`,
+              `<g clip-path="url(#bar)">${segments}</g>`,
+              legend,
+              `</svg>`,
+            ].join('\n');
+            fs.mkdirSync('languages-card', { recursive: true });
+            fs.writeFileSync('languages-card/languages.svg', svg);
+            core.info(langs.map((l) => `${l.name}: ${l.pct.toFixed(2)}%`).join('\n'));
+
+      - name: Commit card
+        run: |
+          git config user.name "languages-card[bot]"
+          git config user.email "languages-card-bot@users.noreply.github.com"
+          git add languages-card/languages.svg
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Update languages card"
+          git pull --rebase origin main
+          git push
